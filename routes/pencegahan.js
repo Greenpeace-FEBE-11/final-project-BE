@@ -1,12 +1,24 @@
-const express = require('express');
-const router = express.Router();
 
-const {createPrevention, updatePrevention, deletePrevention, getSinglePrevention, getAllPreventions,deleteallPreventions} = require('../controllers/pencegahanController');
+const {authJwt} = require('../middlewares')
+const controller = require("../controllers/pencegahanController")
 
-router.route('/').post(createPrevention);
-router.route('/:id').put(updatePrevention);
-router.route('/:id').delete(deletePrevention);
-router.route('/:id').get(getSinglePrevention);
-router.route('/').get(getAllPreventions);
-//router.route('/').delete(deleteallPreventions);
-module.exports = router
+module.exports = function(app) {
+    app.use(function(req, res, next) {
+      res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, Content-Type, Accept"
+      );
+      next();
+    });
+  
+  
+
+    app.post('/pencegahan', authJwt.verifyToken, authJwt.isAdmin, controller.createPrevention)
+
+    app.put('/pencegahan/:id', authJwt.verifyToken, authJwt.isAdmin,  controller.updatePrevention)
+    app.delete('/pencegahan/:id', authJwt.verifyToken, authJwt.isAdmin,  controller.deletePrevention)
+    app.get('/pencegahan/:id', authJwt.verifyToken,  controller.getSinglePrevention)
+    app.get('/pencegahan',  authJwt.verifyToken,  controller.deleteallPreventions)
+    
+    
+  };

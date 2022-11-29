@@ -106,6 +106,7 @@ function initial() {
         console.log("added 'user' to roles collection");
       });
 
+      new Role({
         name: "admin"
       }).save(err => {
         if (err) {
@@ -115,5 +116,6 @@ function initial() {
         console.log("added 'admin' to roles collection");
       });
     }
-  });
+  })
 }
+

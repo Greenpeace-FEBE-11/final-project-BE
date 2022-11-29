@@ -13,9 +13,9 @@ module.exports = function(app) {
     });
   
     app.get("/userpage",  controller.getInformasi)
-    app.get("/userpage/:id",  controller.getInformasiById)
+    app.get("/userpage/:id", controller.getInformasiById)
     app.post("/userpage",  controller.addInformasi)
-    app.put("/userpage/:id",  controller.updateInformasi)
+    app.put("/userpage/:id", controller.updateInformasi)
     app.delete("/userpage/:id",  controller.deleteInformasi)
   
   

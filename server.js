@@ -84,6 +84,7 @@ app.get("/", (req, res) => {
 // routes
 require("./routes/userpage.router")(app);
 require("./routes/dampak")(app);
+
 require("./routes/pencegahan")(app);
 require("./routes/auth.routes")(app);
 

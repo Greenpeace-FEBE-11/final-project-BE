@@ -1,4 +1,5 @@
 const express = require('express')
+const {authJwt} = require('../middlewares')
 const controller = require("../controllers/userpage.controller")
 
 
@@ -12,11 +13,11 @@ module.exports = function(app) {
       next();
     });
   
-    app.get("/userpage",  controller.getInformasi)
-    app.get("/userpage/:id", controller.getInformasiById)
-    app.post("/userpage",  controller.addInformasi)
-    app.put("/userpage/:id", controller.updateInformasi)
-    app.delete("/userpage/:id",  controller.deleteInformasi)
+    app.get("/userpage", authJwt.verifyToken, controller.getInformasi)
+    app.get("/userpage/:id", authJwt.verifyToken, controller.getInformasiById)
+    app.post("/userpage", authJwt.verifyToken, controller.addInformasi)
+    app.put("/userpage/:id", authJwt.verifyToken, controller.updateInformasi)
+    app.delete("/userpage/:id", authJwt.verifyToken, controller.deleteInformasi)
   
   
     

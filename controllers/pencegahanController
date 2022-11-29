@@ -129,7 +129,7 @@ exports.createPrevention = asyncHandler(async (req, res) => {
  * @route /api/prevention
  * @access Public
  */
-/* 
+
 exports.deleteallPreventions = asyncHandler(async (req, res) => {
     const existPrevention = await Pencegahan.find({})
     if(existPrevention){
@@ -146,4 +146,4 @@ exports.deleteallPreventions = asyncHandler(async (req, res) => {
         })
     }
    
-})*/
+})

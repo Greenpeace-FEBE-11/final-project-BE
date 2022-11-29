@@ -18,7 +18,7 @@ module.exports = function(app) {
     app.put('/pencegahan/:id', authJwt.verifyToken, authJwt.isAdmin,  controller.updatePrevention)
     app.delete('/pencegahan/:id', authJwt.verifyToken, authJwt.isAdmin,  controller.deletePrevention)
     app.get('/pencegahan/:id', authJwt.verifyToken,  controller.getSinglePrevention)
-    app.get('/pencegahan',  authJwt.verifyToken,  controller.deleteallPreventions)
+    app.get('/pencegahan',  authJwt.verifyToken,  controller.getAllPreventions)
     
     
   };

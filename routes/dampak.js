@@ -18,6 +18,5 @@ module.exports = function(app) {
     app.delete('/dampak/:id', authJwt.verifyToken, authJwt.isAdmin,  controller.deleteDampak)
     app.get('/dampak/:id', authJwt.verifyToken,  controller.getSingleDampak)
     app.get('/dampak',  authJwt.verifyToken,  controller.getAllDampaks)
-  
-    
+
   };

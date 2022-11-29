@@ -85,6 +85,7 @@ app.get("/", (req, res) => {
 require("./routes/userpage.router")(app);
 require("./routes/dampak")(app);
 require("./routes/auth.routes")(app);
+require("./routes/userprofile")(app);
 
 
 // set port, listen for requests

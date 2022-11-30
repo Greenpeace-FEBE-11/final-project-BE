@@ -3,6 +3,31 @@ const asyncHandler = require('express-async-handler');
 const Userprofile = require("../models/userprofile");
 const userprofile = require('../routes/userprofile');
 
+
+exports.getUserProfil = async (req, res) =>{
+  try {
+    const userProfil = await Userprofile.find()
+    res.status(200).json({
+      message: "success get data",
+      data: userProfil
+    })
+  } catch  {
+    res.status(400).json({
+      message: "get data failed"
+    })
+  }
+},
+
+exports.getDetailUser = async (req, res) =>{
+    Userprofile.find({})
+    .populate('email.email')
+    .exec(function (error, posts) {
+        res.send(posts)
+    })
+}
+
+
+
 exports.createprofile = asyncHandler(async(req, res) => {
   const {namaDepan, namaBelakang, email, password, jenisKelamin, nomorTelepon, alamat} = req.body
   const userprofile = await Userprofile.create({namaDepan, namaBelakang, email, password, jenisKelamin, nomorTelepon, alamat});

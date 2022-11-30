@@ -11,14 +11,20 @@ const userProfileSchema = new Schema({
         type: String,
         required: true,
     },
-    email: {
-        type: String,
-        required: true,
-    },
-    password: {
-        type: String,
-        required: true,
-    },
+    email: [{
+        
+        email: {
+            type: mongoose.Schema.Types.ObjectId, 
+            ref: 'User'
+        }
+    }],
+    
+    // password: [{
+    //     password: {
+    //         type: mongoose.Schema.Types.ObjectId, 
+    //         ref: 'User'
+    //     }
+    // }],
     jenisKelamin: {
         type: String,
         required: true,

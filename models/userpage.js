@@ -2,19 +2,18 @@ const mongoose = require('mongoose')
 
 
 const {Schema} = mongoose
-
     const userPageSchema = new Schema ({
         name: {
             type: String,
-            required: true
+           
         },
         title: {
             type: String,
-            required: true
+         
         },
         content: {
             type: String,
-            required: true
+           
 
         },
       
@@ -22,6 +21,12 @@ const {Schema} = mongoose
             type: String,
             
         },
+
+        // comment: [{
+        //     text: String,
+        //     type: Schema.Types.ObjectId,
+        //     ref: 'User'
+        // }],
 
         createdAt: {
             type: Date,
@@ -33,8 +38,7 @@ const {Schema} = mongoose
         },
     })
 
-
-
+    
 const userpage = mongoose.model("userpage", userPageSchema)
 
 module.exports = userpage

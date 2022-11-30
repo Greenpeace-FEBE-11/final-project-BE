@@ -16,6 +16,7 @@ module.exports = function(app) {
     app.get("/userpage", authJwt.verifyToken, controller.getInformasi)
     app.get("/userpage/:id", authJwt.verifyToken, controller.getInformasiById)
     app.post("/userpage", authJwt.verifyToken, controller.addInformasi)
+    // app.post("/userpage/:id", authJwt.verifyToken, controller.addInformasiById)
     app.put("/userpage/:id", authJwt.verifyToken, controller.updateInformasi)
     app.delete("/userpage/:id", authJwt.verifyToken, controller.deleteInformasi)
   

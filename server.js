@@ -62,12 +62,8 @@ app.use(
 const db = require("./models");
 const Role = db.role;
 
-db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
+dbConfig.
+  then(() => {
     console.log("Successfully connect to MongoDB.");
     initial();
   })
@@ -84,7 +80,6 @@ app.get("/", (req, res) => {
 // routes
 require("./routes/userpage.router")(app);
 require("./routes/dampak")(app);
-
 require("./routes/pencegahan")(app);
 require("./routes/auth.routes")(app);
 

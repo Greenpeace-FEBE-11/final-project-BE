@@ -1,4 +1,4 @@
-const { verifySignUp } = require("../middlewares");
+const { verifySignUp, authJwt } = require("../middlewares");
 const controller = require("../controllers/auth.controller");
 
 module.exports = function(app) {
@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
 
   app.post(
-    "/register",
+    "/signup",
     [
       verifySignUp.checkDuplicateUsernameOrEmail,
       verifySignUp.checkRolesExisted
@@ -19,7 +19,13 @@ module.exports = function(app) {
     controller.register
   );
 
-  app.post("/login", controller.login);
+  app.post("/signin", controller.login);
 
-  app.post("/logout", controller.logout);
+  app.post("/signout", controller.logout);
+
+
+  app.get("/admin", controller.getDataUser)
+  app.get("/admin/:id", authJwt.verifyToken, authJwt.isAdmin, controller.getDataUserById)
+  app.delete("/admin/:id", authJwt.verifyToken, authJwt.isAdmin, controller.deletUserById)
+  app.put("/admin/:id", authJwt.verifyToken, authJwt.isAdmin, controller.updateUserById)
 };

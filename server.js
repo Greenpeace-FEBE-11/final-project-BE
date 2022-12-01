@@ -32,6 +32,7 @@ const fileFilter= (req, file, cb) => {
 const app = express();
 
 const corsOptions = {
+
   origin: "*"
 };
 

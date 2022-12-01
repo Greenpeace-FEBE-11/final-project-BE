@@ -31,4 +31,8 @@ const app = require('express').Router()
   app.put("/admin/:id", authJwt.verifyToken, authJwt.isAdmin, controller.updateUserById)
 
 
+
+
+
 module.exports = app
+

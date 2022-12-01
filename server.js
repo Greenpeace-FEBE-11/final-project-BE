@@ -72,9 +72,10 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to voluntegreen application." });
 });
 
-// routes
+
 const allRouter = require('./routes/')
 app.use(allRouter)
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

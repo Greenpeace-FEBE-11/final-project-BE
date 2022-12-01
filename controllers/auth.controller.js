@@ -1,4 +1,5 @@
 const config = require("../config/auth.config");
+const user = require('../models/user.model')
 const db = require("../models");
 const User = db.user;
 const Role = db.role;
@@ -80,12 +81,13 @@ exports.login = (req, res) => {
 
       
 
-      req.session.token = token;
+      req.headers.token = token;
 
       res.status(200).send({
         token,
         username: user.username,
         email: user.email,
+        roles : user.roles
      
       });
     });
@@ -93,9 +95,82 @@ exports.login = (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    req.session = null;
+    req.headers = null;
     return res.status(200).send({ message: "You've been signed out!" });
   } catch (err) {
     this.next(err);
   }
 };
+
+exports.getDataUser = async (req, res) =>{
+
+  
+  try {
+    const data = await user.find()
+    res.status(200).json({
+      message: "success get data",
+      data: data
+    })
+  } catch {
+    res.status(400).json({
+      message: "data user not found"
+    })
+  }  
+  
+},
+
+exports.getDataUserById = async (req, res) =>{
+  try {
+
+    const data = await user.findOne({_id: req.params.id})
+    res.status(200).json({
+      message: "get user detail successfuly",
+      data: data
+    })
+  } catch {
+    
+    res.status(400).json({
+      message: "user not found"
+    })
+  }
+},
+
+exports.deletUserById = async (req, res) =>{
+
+  try {
+    await user.deleteOne({_id: req.params.id})
+    res.status(200).json({
+      message: "delete successfuly"
+
+    })
+
+  } catch {
+    
+    res.status(400).json({
+      message: "delete user failed"
+    })
+  }
+},
+
+
+exports.updateUserById = async (req, res) =>{
+  const {username, email, password} = req.body
+  const updateUser = await user.findOneAndUpdate({_id: req.params.id})
+  if(updateUser){
+    updateUser.username = username;
+    updateUser.email = email
+    updateUser.password = password
+    
+
+    const updated = await updateUser.save()
+    res.status(200).json({
+      message: "update user successfuly",
+      data: updated
+    })
+  }else {
+    res.status(400).json({
+      message: "user not found"
+    })
+  }
+
+}

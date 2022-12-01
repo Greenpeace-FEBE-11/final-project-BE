@@ -1,5 +1,6 @@
 const userpage = require('../models/userpage')
 const userPage = require('../models/userpage')
+const comment = require('../models/comment')
 
 
 exports.getInformasi= async (req, res) =>{
@@ -16,25 +17,34 @@ exports.getInformasi= async (req, res) =>{
     },
 
 exports.getInformasiById = async (req, res)=>{
-    try {
-        const InformationById = await userPage.findOne({_id: req.params.id})
+    // try {
+        const InformationById = await userPage.findOne({id: req.params.id}).populate('postedBy').exec((err, result) =>{
+            if(err) {
+                return res.json({
+                    error: err
+                })
+            }
+            res.json({
+                result: result
+            })
+        })
 
-        res.status(200).json({
-            message: "success get detail information",
-            data: InformationById
-        })
-    } catch  {
-        res.status(404).json({
-            message: "information not found"
-        })
-    }
+    //     res.status(200).json({
+    //         message: "success get detail information",
+    //         data: InformationById
+    //     })
+    // } catch  {
+    //     res.status(404).json({
+    //         message: "information not found"
+    //     })
+    // }
     
 },
 
 exports.addInformasi = async (req, res) =>{
-        const {name, title, content} = req.body
+        const {name, content, alamat, postedBy} = req.body
         const image = req.file.path
-        const informasi = await userPage.create({name, title, content, image})
+        const informasi = await userPage.create({name,  content, alamat, postedBy, image})
         res.status(200).json({
             message: "success add information",
             data: informasi
@@ -53,15 +63,27 @@ exports.addInformasi = async (req, res) =>{
         */
     },
 
+// exports.addInformasiById = async (req, res) =>{
+//     const {textComment} = req.body
+//     const commentUser = await comment.create({textComment})
+//     res.status(200).json({
+//         message: "success add data",
+//         data: commentUser
+//     })
+
+    
+    
+// }
+
 exports.updateInformasi = async (req, res) =>{
-    const {name, title, content} = req.body
+    const {name, content, alamat} = req.body
     const image = req.file.path
     const userInformasi = await userPage.findById(req.params.id)
     
     if(userInformasi){
         userInformasi.name = name
-        userInformasi.title = title
         userInformasi.content = content
+        userInformasi.alamat = alamat
         userInformasi.image = image
         const informationUpdate = await userInformasi.save()
             res.status(200).json({
@@ -75,9 +97,7 @@ exports.updateInformasi = async (req, res) =>{
             })
         }
             
-            
-       
-        
+              
         
 },
 

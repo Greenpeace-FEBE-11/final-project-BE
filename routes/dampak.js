@@ -1,7 +1,8 @@
 const {authJwt} = require('../middlewares')
 const controller = require("../controllers/dampakController")
+const app = require('express').Router()
 
-module.exports = function(app) {
+
     app.use(function(req, res, next) {
       res.header(
         "Access-Control-Allow-Headers",
@@ -18,6 +19,6 @@ module.exports = function(app) {
     app.delete('/dampak/:id', authJwt.verifyToken, authJwt.isAdmin,  controller.deleteDampak)
     app.get('/dampak/:id', authJwt.verifyToken,  controller.getSingleDampak)
     app.get('/dampak',  authJwt.verifyToken,  controller.getAllDampaks)
-  
-    
-  };
+
+
+    module.exports = app

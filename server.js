@@ -32,7 +32,8 @@ const fileFilter= (req, file, cb) => {
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:8081"
+
+  origin: "*"
 };
 
 
@@ -51,23 +52,13 @@ if(process.env.MODE === 'development'){
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  cookieSession({
-    name: "voluntegreen-session",
-    secret: "COOKIE_SECRET", // should use as secret environment variable
-    httpOnly: true
-  })
-);
+
 
 const db = require("./models");
 const Role = db.role;
 
-db.mongoose
-  .connect(`mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(() => {
+dbConfig.
+  then(() => {
     console.log("Successfully connect to MongoDB.");
     initial();
   })
@@ -81,11 +72,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to voluntegreen application." });
 });
 
-// routes
-require("./routes/userpage.router")(app);
-require("./routes/dampak")(app);
-require("./routes/auth.routes")(app);
-require("./routes/userprofile")(app);
+
+const allRouter = require('./routes/')
+app.use(allRouter)
 
 
 // set port, listen for requests

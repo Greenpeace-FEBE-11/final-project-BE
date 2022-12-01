@@ -1,7 +1,8 @@
-const { verifySignUp } = require("../middlewares");
+const { verifySignUp, authJwt } = require("../middlewares");
 const controller = require("../controllers/auth.controller");
+const app = require('express').Router()
 
-module.exports = function(app) {
+
   app.use(function(req, res, next) {
     res.header(
       "Access-Control-Allow-Headers",
@@ -11,7 +12,7 @@ module.exports = function(app) {
   });
 
   app.post(
-    "/register",
+    "/signup",
     [
       verifySignUp.checkDuplicateUsernameOrEmail,
       verifySignUp.checkRolesExisted
@@ -19,11 +20,19 @@ module.exports = function(app) {
     controller.register
   );
 
-  app.post("/login", controller.login);
+  app.post("/signin", controller.login);
 
-  app.post("/logout", controller.logout);
+  app.post("/signout", controller.logout);
 
-  
 
-  
-};
+  app.get("/admin", controller.getDataUser)
+  app.get("/admin/:id", authJwt.verifyToken, authJwt.isAdmin, controller.getDataUserById)
+  app.delete("/admin/:id", authJwt.verifyToken, authJwt.isAdmin, controller.deletUserById)
+  app.put("/admin/:id", authJwt.verifyToken, authJwt.isAdmin, controller.updateUserById)
+
+
+
+
+
+module.exports = app
+

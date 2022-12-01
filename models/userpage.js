@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const User = require('./user.model')
 
 
+
 const {Schema} = mongoose
     const userPageSchema = new Schema ({
         name: {
@@ -17,6 +18,14 @@ const {Schema} = mongoose
         alamat :{
             type: String,
             required: true
+           
+        },
+        title: {
+            type: String,
+         
+        },
+        content: {
+            type: String,
         },
       
         image: {
@@ -28,6 +37,7 @@ const {Schema} = mongoose
             type: mongoose.Schema.Types.ObjectId,
             ref: User
         },
+       
 
         createdAt: {
             type: Date,

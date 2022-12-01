@@ -20,9 +20,12 @@ const User = mongoose.model(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Role"
       }
-    ]
+    ],
 
-   
+    posts: [{
+      type: mongoose.Schema.ObjectId,
+      ref: 'userpage'
+    }]
   })
 );
 

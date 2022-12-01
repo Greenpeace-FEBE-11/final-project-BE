@@ -5,10 +5,7 @@ const User = require('./user.model')
 
 const {Schema} = mongoose
     const userPageSchema = new Schema ({
-        name: {
-            type: String,
-            required: true
-        },
+       
         
         content: {
             type: String,
@@ -20,12 +17,25 @@ const {Schema} = mongoose
             required: true
            
         },
+        
+        content: {
+            type: String,
+            required: true
+
+        },
+        alamat :{
+            type: String,
+            required: true
+           
+
+        },
         image: {
             type: String,
             
         },
 
-        postedBy: {
+        posttedBy: {
+
             type: mongoose.Schema.Types.ObjectId,
             ref: User
         },

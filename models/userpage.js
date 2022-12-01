@@ -1,20 +1,22 @@
 const mongoose = require('mongoose')
+const User = require('./user.model')
 
 
 const {Schema} = mongoose
     const userPageSchema = new Schema ({
         name: {
             type: String,
-           
+            required: true
         },
-        title: {
-            type: String,
-         
-        },
+        
         content: {
             type: String,
-           
+            required: true
 
+        },
+        alamat :{
+            type: String,
+            required: true
         },
       
         image: {
@@ -22,11 +24,10 @@ const {Schema} = mongoose
             
         },
 
-        // comment: [{
-        //     text: String,
-        //     type: Schema.Types.ObjectId,
-        //     ref: 'User'
-        // }],
+        posttedBy: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: User
+        },
 
         createdAt: {
             type: Date,

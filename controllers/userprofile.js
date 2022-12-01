@@ -1,5 +1,5 @@
 const asyncHandler = require('express-async-handler');
-const { findById } = require('../models/userprofile');
+
 
 const Userprofile = require("../models/userprofile");
 const userprofile = require('../routes/userprofile');
@@ -21,15 +21,19 @@ exports.getUserProfil = async (req, res) =>{
 
 
 exports.getUserProfileById = async (req, res)=> {
-  try {
-    const userById = await user.findOne({_id: req.params.id})
-    res.status(200).json({
-      message: "get user detail",
-      data: userById
-    })
-  } catch (error) {
+ 
+    const userById = await Userprofile.findOne({_id: req.params.id}).populate('users').exec((err, result) =>{
+      if(err) {
+          return res.json({
+              error: err
+          })
+      }
+      res.send({
+          result,
+          
+      })
+  })
     
-  }
 }
 
 exports.getDetailUser = async (req, res) =>{
@@ -43,8 +47,8 @@ exports.getDetailUser = async (req, res) =>{
 
 
 exports.createprofile = asyncHandler(async(req, res) => {
-  const {namaDepan, namaBelakang, email, password, jenisKelamin, nomorTelepon, alamat,user} = req.body
-  const userprofile = await Userprofile.create({namaDepan, namaBelakang, email, password, jenisKelamin, nomorTelepon, alamat, user});
+  const {namaDepan, namaBelakang, email, password, jenisKelamin, nomorTelepon, alamat, users} = req.body
+  const userprofile = await Userprofile.create({namaDepan, namaBelakang, email, password, jenisKelamin, nomorTelepon, alamat, users});
   res.status(201).json({
     success: true,
     data: userprofile,

@@ -99,13 +99,3 @@ exports.logout = async (req, res) => {
     this.next(err);
   }
 };
-
-
-exports.getUser = async (req, res) =>{
-
-  const data = await user.find()
-  res.status(200).json({
-    message: "get data successfuly",
-    data: data
-  })
-}

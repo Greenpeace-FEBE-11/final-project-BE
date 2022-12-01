@@ -13,11 +13,13 @@ verifyToken = (req, res, next) => {
   }
   try {
     const decoded = jwt.verify(token, config.secret);
-    req.user = decoded;
+    req.userId = decoded.id;
+    next();
+    
   } catch (err) {
     return res.status(401).send({message: "Invalid Token"});
   }
-  return next();
+ 
 };
 
 isAdmin = (req, res, next) => {

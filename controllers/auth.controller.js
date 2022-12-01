@@ -86,6 +86,7 @@ exports.login = (req, res) => {
         token,
         username: user.username,
         email: user.email,
+        roles : user.roles
      
       });
     });
@@ -93,7 +94,7 @@ exports.login = (req, res) => {
 
 exports.logout = async (req, res) => {
   try {
-    req.session = null;
+    req.headers = null;
     return res.status(200).send({ message: "You've been signed out!" });
   } catch (err) {
     this.next(err);

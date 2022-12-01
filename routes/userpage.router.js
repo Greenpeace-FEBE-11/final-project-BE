@@ -11,7 +11,7 @@ const app = express.Router()
       next();
     });
   
-    app.get("/userpage", authJwt.verifyToken, controller.getInformasi)
+    app.get("/userpage",  controller.getInformasi)
     app.get("/userpage/:id", authJwt.verifyToken, controller.getInformasiById)
     app.post("/userpage", authJwt.verifyToken, controller.addInformasi)
     // app.post("/userpage/:id", authJwt.verifyToken, controller.addInformasiById)

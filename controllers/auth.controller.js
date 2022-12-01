@@ -80,7 +80,7 @@ exports.login = (req, res) => {
 
       
 
-      req.session.token = token;
+      req.headers.token = token;
 
       res.status(200).send({
         token,

@@ -52,13 +52,7 @@ if(process.env.MODE === 'development'){
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(
-  cookieSession({
-    name: "voluntegreen-session",
-    secret: "COOKIE_SECRET", // should use as secret environment variable
-    httpOnly: true
-  })
-);
+
 
 const db = require("./models");
 const Role = db.role;
@@ -79,11 +73,8 @@ app.get("/", (req, res) => {
 });
 
 // routes
-require("./routes/userpage.router")(app);
-require("./routes/dampak")(app);
-require("./routes/pencegahan")(app);
-require("./routes/auth.routes")(app);
-
+const allRouter = require('./routes/')
+app.use(allRouter)
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;

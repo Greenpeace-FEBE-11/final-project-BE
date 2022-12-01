@@ -1,8 +1,10 @@
 
 const {authJwt} = require('../middlewares')
 const controller = require("../controllers/pencegahanController")
+const express = require('express')
+const app = express.Router()
 
-module.exports = function(app) {
+
     app.use(function(req, res, next) {
       res.header(
         "Access-Control-Allow-Headers",
@@ -21,4 +23,4 @@ module.exports = function(app) {
     app.get('/pencegahan',  authJwt.verifyToken,  controller.getAllPreventions)
     
     
-  };
+module.exports = app

@@ -11,20 +11,6 @@ const userProfileSchema = new Schema({
         type: String,
         required: true,
     },
-    email: [{
-        
-        email: {
-            type: mongoose.Schema.Types.ObjectId, 
-            ref: 'User'
-        }
-    }],
-    
-    // password: [{
-    //     password: {
-    //         type: mongoose.Schema.Types.ObjectId, 
-    //         ref: 'User'
-    //     }
-    // }],
     jenisKelamin: {
         type: String,
         required: true,
@@ -37,6 +23,8 @@ const userProfileSchema = new Schema({
         type: String,
         required: true,
     }
+
+    
 })
 
 const userprofile = mongoose.model('userprofile', userProfileSchema)

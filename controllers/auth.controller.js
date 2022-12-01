@@ -5,6 +5,7 @@ const Role = db.role;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+const { user } = require("../models");
 
 exports.register = (req, res) => {
   const user = new User({
@@ -100,3 +101,11 @@ exports.logout = async (req, res) => {
 };
 
 
+exports.getUser = async (req, res) =>{
+
+  const data = await user.find()
+  res.status(200).json({
+    message: "get data successfuly",
+    data: data
+  })
+}

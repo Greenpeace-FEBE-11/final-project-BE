@@ -20,14 +20,6 @@ const {Schema} = mongoose
             required: true
            
         },
-        title: {
-            type: String,
-         
-        },
-        content: {
-            type: String,
-        },
-      
         image: {
             type: String,
             

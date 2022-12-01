@@ -14,7 +14,7 @@ module.exports = function(app) {
     app.post('/userprofile', [authJwt.verifyToken, authJwt.isUser], controller.createprofile)
 
     app.put('/userprofile/:id', [authJwt.verifyToken, authJwt.isUser], controller.updateprofileByID)
-    app.get('/userprofile', [authJwt.verifyToken, authJwt.isUser], controller.getUserProfil)
+    app.get('/userprofile', [authJwt.verifyToken], controller.getUserProfil)
     app.get('/userprofile/:id', [authJwt.verifyToken, authJwt.isUser], controller.getUserProfileById)
     app.delete('/userprofile/:id', [authJwt.verifyToken, authJwt.isUser], controller.deleteProfile)
    

@@ -27,7 +27,7 @@ exports.createPrevention = asyncHandler(async (req, res) => {
 
  exports.updatePrevention = asyncHandler(async (req, res) => {
     const {category,title,content,date,image} = req.body
-    const image = req.file.path;
+
     const existPrevention = await Pencegahan.findOne({ _id : req.params.id})
     if(existPrevention){
         existPrevention.category = category;

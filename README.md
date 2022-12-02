@@ -1,5 +1,5 @@
 # Final project BE
-
+![](erd.png)
 # API Spec
 
 Run Node.js application with command: `npm run dev` or `node server.js`.

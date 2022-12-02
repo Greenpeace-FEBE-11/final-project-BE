@@ -1,7 +1,7 @@
 # Final project BE
 
 
-#ERD (Entity Relationship Diagram)
+# ERD (Entity Relationship Diagram)
 ![](erd.png)
 # API Spec
 

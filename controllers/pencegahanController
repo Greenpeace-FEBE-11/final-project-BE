@@ -9,8 +9,8 @@ const Pencegahan = require('../models/pencegahanModel');
  * @access Public
  */
 exports.createPrevention = asyncHandler(async (req, res) => {
-    const {category,title,content,date} = req.body
-    const image = req.file.path;
+    const {category,title,content,date,image} = req.body
+    
     const pencegahan = await Pencegahan.create({category,title,content,date,image});
     res.status(201).json({
         success: true,
@@ -26,8 +26,8 @@ exports.createPrevention = asyncHandler(async (req, res) => {
  */
 
  exports.updatePrevention = asyncHandler(async (req, res) => {
-    const {category,title,content,date} = req.body
-    const image = req.file.path;
+    const {category,title,content,date,image} = req.body
+
     const existPrevention = await Pencegahan.findOne({ _id : req.params.id})
     if(existPrevention){
         existPrevention.category = category;

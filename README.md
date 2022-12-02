@@ -179,13 +179,12 @@ Request :
 {
     "success": true,
     "data": {
-        "image": "true",
         "_id": "6385fe3f1050edc72b3efaf1",
         "category": "penecegahan",
         "title": "lorem ipsum",
         "content": "lorem ipsum",
         "date": "2022-11-29T12:42:39.430Z",
-        "img": "img1",
+        "image": "images\\1669731452242-cutnyak.png",
         "__v": 0
     },
     "message": "Prevention is fetched successfully"
@@ -266,6 +265,10 @@ Request :
 form-data
 <table>
   <tr>
+    <td>category</td>
+    <td>dampak</td>
+  </tr>
+  <tr>
     <td>title</td>
     <td>Lorem ipsum</td>
   </tr>
@@ -285,6 +288,7 @@ Response :
 {
     "success": true,
     "data": {
+        "category": "dampak",
         "title": "Lorem ipsum",
         "content": "Lorem ipsum",
         "date": "2022-11-30T13:17:00.917Z",
@@ -312,6 +316,7 @@ Response :
     "data": [
         {
             "_id": "6385fe3f1050edc72b3efaf1",
+            "category": "dampak",
             "title": "lorem ipsum",
             "content": "lorem ipsum",
             "date": "2022-11-29T12:42:39.430Z",
@@ -320,6 +325,7 @@ Response :
         },
         {
             "_id": "6386115fe17cbdbe3e3c081a",
+            "category": "dampak",
             "title": "lorem ipsum4",
             "content": "lorem ipsum4",
             "image": "images\\1669731452242-ahnasution.png",
@@ -344,6 +350,7 @@ Response :
     "success": true,
     "data": {
         "_id": "6385fe3f1050edc72b3efaf1",
+        "category": "dampak",
         "title": "lorem ipsum",
         "content": "lorem ipsum",
         "date": "2022-11-29T12:42:39.430Z",
@@ -364,6 +371,10 @@ Request :
 - Body :
 form-data
 <table>
+   <tr>
+    <td>category</td>
+    <td>dampak</td>
+  </tr>
   <tr>
     <td>title</td>
     <td>Lorem ipsum</td>
@@ -386,6 +397,7 @@ Response :
     "success": true,
     "data": {
         "_id": "6385fe3f1050edc72b3efaf1",
+        "pencegahan": "dampak",
         "title": "Lorem ipsum",
         "content": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
         "image": "images\\1669860672436-pohon2.PNG",
@@ -422,10 +434,6 @@ Request :
 form-data
 <table>
   <tr>
-    <td>name</td>
-    <td>lisa</td>
-  </tr>
-  <tr>
     <td>title</td>
     <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
   </tr>
@@ -436,6 +444,10 @@ form-data
   <tr>
     <td>image</td>
     <td>/D:/Users/User/OneDrive/Pictures/informasi.PNG</td>
+    </tr>
+  <tr>
+    <td>alamat</td>
+    <td>cianjur</td>
   </tr>
 </table>
 
@@ -446,12 +458,15 @@ Response :
 {
   "message": "succes add data",
   "data": {
-    "createdAt": "2022-01-12T11:49:11.934Z",
     "_id": "637a21612f024d09e0d2829f",
-    "name": "lisa",
     "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Fames ac turpis egestas sed tempus. Eleifend mi in nulla posuere. Tempus quam pellentesque nec nam aliquam sem et. Curabitur vitae nunc sed velit dignissim sodales. Augue lacus viverra vitae congue eu consequat. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. Sed tempus urna et pharetra. Justo donec enim diam vulputate ut pharetra sit. Arcu ac tortor dignissim convallis aenean et. Auctor eu augue ut lectus arcu bibendum.",
-    "image": "images\\1669860672436-informasi.PNG"
+    "alamat": "cianjur",
+    "image": "images\\1669860672436-informasi.PNG",
+    "postedBy": "6388da69a331408205d4086b",
+    "createdAt": "2022-12-01T23:18:35.489Z",
+    "updateAt": "2022-12-01T23:18:35.489Z",
+    "__v": 0
   }
 }
 }
@@ -468,16 +483,16 @@ Request :
 form-data
 <table>
   <tr>
-    <td>name</td>
-    <td>lisa</td>
-  </tr>
-  <tr>
     <td>title</td>
     <td>Lorem ipsum</td>
   </tr>
   <tr>
     <td>content</td>
     <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Fames ac turpis egestas sed tempus. Eleifend mi in nulla posuere. Tempus quam pellentesque nec nam aliquam sem et.</td>
+  </tr>
+  <tr>
+    <td>alamat</td>
+    <td>cianjur</td>
   </tr>
   <tr>
     <td>image</td>
@@ -489,17 +504,18 @@ Response :
 
 ```json 
 {
-{
-  "message": "update information successfuly",
-  "data": {
-    "createdAt": "2022-01-12T11:49:11.934Z",
-    "_id": "637a21612f024d09e0d2829f",
-    "name": "lisa",
-    "title": "Lorem ipsum",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Fames ac turpis egestas sed tempus. Eleifend mi in nulla posuere. Tempus quam pellentesque nec nam aliquam sem et.",
-    "image": "images\\1669860672436-informasi.PNG"
-  }
-}
+    "message": "update information successfuly",
+    "data": {
+        "_id": "63893660652156c6db41f88b",
+        "title": "ini title",
+        "content": "lorem ipsum",
+        "alamat": "bandung",
+        "image": "images\\1669943505386-9longsor-purwrejo.jpg",
+        "postedBy": "6388da69a331408205d4086b",
+        "createdAt": "2022-12-01T23:18:35.489Z",
+        "updateAt": "2022-12-01T23:18:35.489Z",
+        "__v": 0
+    }
 }
 ```
 ## Get informasi at user page
@@ -513,25 +529,20 @@ Request :
 
 ```json 
 {
-  "message": "succes get data",
-  "data": [
-    {
-    "createdAt": "2022-01-12T11:49:11.934Z",
-    "_id": "637a21612f024d09e0d2829f",
-    "name": "lisa",
-    "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Fames ac turpis egestas sed tempus. Eleifend mi in nulla posuere. Tempus quam pellentesque nec nam aliquam sem et. Curabitur vitae nunc sed velit dignissim sodales. Augue lacus viverra vitae congue eu consequat. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. Sed tempus urna et pharetra. Justo donec enim diam vulputate ut pharetra sit. Arcu ac tortor dignissim convallis aenean et. Auctor eu augue ut lectus arcu bibendum.",
-    "image": "images\\1669860672436-informasi.PNG"
-    },
-    {
-    "createdAt": "2022-11-19T17:28:24.868Z",
-    "_id": "6379123c518208c027672fe1",
-    "name": "febrianto",
-    "title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Et malesuada fames ac turpis egestas. Fames ac turpis egestas sed tempus. Eleifend mi in nulla posuere. Tempus quam pellentesque nec nam aliquam sem et. Curabitur vitae nunc sed velit dignissim sodales. Augue lacus viverra vitae congue eu consequat. Amet venenatis urna cursus eget nunc scelerisque viverra mauris in. Sed tempus urna et pharetra. Justo donec enim diam vulputate ut pharetra sit. Arcu ac tortor dignissim convallis aenean et. Auctor eu augue ut lectus arcu bibendum.",
-    "image": "images\\1669860672436-informasi2.PNG"
-  }
-  ]
+    "message": "succes get data",
+    "data": [
+        {
+            "_id": "63893660652156c6db41f88b",
+            "title": "ini title",
+            "content": "lorem ipsum",
+            "alamat": "bandung",
+            "image": "images\\1669943505386-9longsor-purwrejo.jpg",
+            "postedBy": "6388da69a331408205d4086b",
+            "createdAt": "2022-12-01T23:18:35.489Z",
+            "updateAt": "2022-12-01T23:18:35.489Z",
+            "__v": 0
+        }
+    ]
 }
 ```
 ## Delete Informasi at user page

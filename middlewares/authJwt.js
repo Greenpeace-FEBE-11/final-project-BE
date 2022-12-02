@@ -5,13 +5,15 @@ const User = db.user;
 const Role = db.role;
 
 verifyToken = (req, res, next) => {
-  const token =
-    req.body.token || req.query.token || req.headers["x-access-token"];
-
-  if (!token) {
+  const auth =
+    req.body.token || req.query.token || req.headers["x-access-token"] || req.headers.authorization;
+    console.log(auth);
+  if (auth === "") {
     return res.status(403).send({ message: "No token provided!" });
   }
   try {
+    const token = auth.split(" ")[1]
+    console.log(token);
     const decoded = jwt.verify(token, config.secret);
     req.userId = decoded.id;
     next();

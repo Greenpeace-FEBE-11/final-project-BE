@@ -584,25 +584,73 @@ Request :
 
 ```json 
 {
-  "message": "succes get data",
-  "data": [
-    {
-    "_id": "637a21612f024d09e0d2829f",
-    "username": "febrianto",
-    "email": "febrianto@gmail.com",
-    "password": "123",
-    "roles": [{"admin"}],
-    "posts": []
-    },
-    {
-    "_id": "657b45781b014c01f0e2867e",
-    "username": "lisa",
-    "email": "lisa@gmail.com",
-    "password": "123",
-    "roles": [{"admin"}],
-    "posts": []
-    }
-  ]
+    "message": "success get data",
+    "data": [
+        {
+            "_id": "6387735c2b0ac0b6e184846f",
+            "username": "febe11",
+            "email": "febe11@gmail.com",
+            "password": "$2a$08$xyjqQr5mPrJ0boat0IX69.DZKZgXtrC9L7zr/bCoiWvSZj7Z3x7Qi",
+            "roles": [
+                "63876e9ff672199d9a7a61e6"
+            ],
+            "posts": [],
+            "__v": 1
+        },
+        {
+            "_id": "63877e9a28806ac201281e76",
+            "username": "vania",
+            "email": "vania@gmail.com",
+            "password": "$2a$08$3wys6Sw5PKokZ3tnLe05k.UN27hIg8dAAGKIk0HwD3m1IGadKeaZK",
+            "roles": [
+                "63876e9ff672199d9a7a61e5"
+            ],
+            "posts": [],
+            "__v": 1
+        },
+        {
+            "_id": "638828fcecd7e967276f4271",
+            "username": "ilham",
+            "email": "ilham@gmail.com",
+            "password": "$2a$08$cxP3wPGm8LNRz8ma1n/GyuZx5dKLn2UEXslDPnLDWsvuujdkyGKgK",
+            "roles": [
+                "63876e9ff672199d9a7a61e5"
+            ],
+            "posts": [],
+            "__v": 1
+        },
+        {
+            "_id": "6388344cbe24c583e17949e0",
+            "username": "firdaus",
+            "email": "firdaus@gmail.com",
+            "password": "$2a$08$OBWMgBSAcQfWI6KF3MvloO6gcgcoRGOFfAgA1p1xAkKgXhr21/OMu",
+            "roles": [
+                "63876e9ff672199d9a7a61e5"
+            ],
+            "posts": [],
+            "__v": 1
+        },
+        {
+            "_id": "6388da69a331408205d4086b",
+            "username": "febrianto",
+            "email": "febrianto@gmail.com",
+            "password": "$2a$08$QMmytK8NrvJQT.hASMqb8ujfBBdambvGZxqduUysY2rhVMHCzfrDu",
+            "roles": [
+                "63876e9ff672199d9a7a61e5"
+            ],
+            "__v": 1
+        },
+        {
+            "_id": "6389237ba8978db17c751e5b",
+            "username": "rosyk",
+            "email": "rosyk@gmail.com",
+            "password": "$2a$08$trzP55uvwBc.PHF1Y1I2d.UPntAdxfLkvMIJjRdxH4lUVPQcQ1sCW",
+            "roles": [
+                "63876e9ff672199d9a7a61e6"
+            ],
+            "__v": 1
+        }
+    ]
 }
 ```
 ## Get single user
@@ -616,17 +664,18 @@ Request :
 
 ```json 
 {
-  "message": "get user detail successfuly",
-  "data": [
-    {
-    "_id": "637a21612f024d09e0d2829f",
-    "username": "febrianto",
-    "email": "febrianto@gmail.com",
-    "password": "123",
-    "roles": [{"admin"}],
-    "posts": []
+    "message": "get user detail successfuly",
+    "data": {
+        "_id": "6387735c2b0ac0b6e184846f",
+        "username": "febe11",
+        "email": "febe11@gmail.com",
+        "password": "$2a$08$xyjqQr5mPrJ0boat0IX69.DZKZgXtrC9L7zr/bCoiWvSZj7Z3x7Qi",
+        "roles": [
+            "63876e9ff672199d9a7a61e6"
+        ],
+        "posts": [],
+        "__v": 1
     }
-  ]
 }
 ```
 ## Update user
@@ -651,16 +700,17 @@ Request :
 
 ```json 
 {
-  "message": "update user successfuly",
-  "data": [
-    {
-    "_id": "637a21612f024d09e0d2829f",
-    "username": "febrianto manangi",
-    "email": "febrianto@gmail.com",
-    "password": "12345",
-    "roles": [{"admin"}],
-    "posts": []
+    "message": "update user successfuly",
+    "data": {
+        "_id": "6387735c2b0ac0b6e184846f",
+        "username": "febe11",
+        "email": "febe11@gmail.com",
+        "password": "$2a$08$xyjqQr5mPrJ0boat0IX69.DZKZgXtrC9L7zr/bCoiWvSZj7Z3x7Qi",
+        "roles": [
+            "63876e9ff672199d9a7a61e6"
+        ],
+        "posts": [],
+        "__v": 1
     }
-  ]
 }
 ```

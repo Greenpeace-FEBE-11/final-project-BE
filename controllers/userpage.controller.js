@@ -18,7 +18,7 @@ exports.getInformasi= async (req, res) =>{
 
 exports.getInformasiById = async (req, res)=>{
     // try {
-        const InformationById = await userPage.findOne({id: req.params.id}).populate('postedBy').exec((err, result) =>{
+        const InformationById = await userPage.findOne({_id: req.params.id}).populate('postedBy').exec((err, result) =>{
             if(err) {
                 return res.json({
                     error: err
@@ -42,8 +42,7 @@ exports.getInformasiById = async (req, res)=>{
 },
 
 exports.addInformasi = async (req, res) =>{
-        const {title, content, alamat, postedBy} = req.body
-        const image = req.file.path
+        const {title, content, alamat, postedBy, image} = req.body
         const informasi = await userPage.create({title,  content, alamat, postedBy, image})
         res.status(200).json({
             message: "success add information",
@@ -76,8 +75,7 @@ exports.addInformasi = async (req, res) =>{
 // }
 
 exports.updateInformasi = async (req, res) =>{
-    const {title, content, alamat} = req.body
-    const image = req.file.path
+    const {title, content, alamat, image} = req.body
     const userInformasi = await userPage.findById(req.params.id)
     
     if(userInformasi){

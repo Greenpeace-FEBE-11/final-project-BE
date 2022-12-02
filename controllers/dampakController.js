@@ -4,8 +4,7 @@ const Dampak = require('../models/dampakModel');
 
 
 exports.createDampak = asyncHandler(async (req, res) => {
-    const {category, title, content} = req.body
-    const image = req.file.path;
+    const {category, title, content, image} = req.body
     const dampak = await Dampak.create({category, title, content, image});
     res.status(201).json({
         success: true,
@@ -17,8 +16,7 @@ exports.createDampak = asyncHandler(async (req, res) => {
 
 
  exports.updateDampak = asyncHandler(async (req, res) => {
-    const {category, title, content} = req.body
-    const image = req.file.path;
+    const {category, title, content, image} = req.body
     const existDampak = await Dampak.findOne({ _id : req.params.id})
     if(existDampak){
         existDampak.category = category;

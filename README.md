@@ -689,11 +689,9 @@ Request :
 - Body :
 ```json 
 {
-    "username": "febrianto manangi",
-    "email": "febrianto@gmail.com",
-    "password": "12345",
-    "roles": [{"admin"}],
-    "posts": []
+    "username": "febe11",
+    "email": "febe11@gmail.com",
+    "password": "12345"
 }
 ```
 - Response :

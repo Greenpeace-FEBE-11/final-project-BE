@@ -5,7 +5,9 @@ const User = require('./user.model')
 
 const {Schema} = mongoose
     const userPageSchema = new Schema ({
-       
+       name: {
+            type: String,
+       }, 
         title: {
             type: String,
             required: true

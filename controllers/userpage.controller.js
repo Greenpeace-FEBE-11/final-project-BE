@@ -42,8 +42,9 @@ exports.getInformasiById = async (req, res)=>{
 },
 
 exports.addInformasi = async (req, res) =>{
-        const {title, content, alamat, postedBy, image} = req.body
-        const informasi = await userPage.create({title,  content, alamat, postedBy, image})
+        const {name, title, content, alamat, postedBy, image} = req.body
+        const informasi = await userPage.create({name, title,  content, alamat, postedBy, image})
+
         res.status(200).json({
             message: "success add information",
             data: informasi
@@ -75,10 +76,11 @@ exports.addInformasi = async (req, res) =>{
 // }
 
 exports.updateInformasi = async (req, res) =>{
-    const {title, content, alamat, image} = req.body
+    const {name, title, content, alamat, image} = req.body
     const userInformasi = await userPage.findById(req.params.id)
     
     if(userInformasi){
+        userInformasi.name = name
         userInformasi.title = title
         userInformasi.content = content
         userInformasi.alamat = alamat

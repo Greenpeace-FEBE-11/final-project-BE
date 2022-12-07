@@ -4,6 +4,7 @@
 # ERD (Entity Relationship Diagram)
 ![](erd.png)
 
+
 `link deploy :` https://voluntegreen.onrender.com
 
 # API Spec
@@ -329,9 +330,12 @@ Request :
 ```
 
 
+
+
 - Response if you token invalid :
 ```json
 {
+
   "message": "Invalid Token"
 }
 ```
@@ -345,9 +349,27 @@ Request :
 
 - Response :
 
+
+- Response if you token invalid :
+```json
+{
+  "message": "Invalid Token"
+}
+```
+
+- Response if the account is not a user role :
+```json
+{
+  "message": "Require User Role!"
+}
+```
+
+- Response : 
 ```json 
 {
+
     "message": "item successfuly deleted"
+
 }
 ```
 
@@ -358,6 +380,7 @@ Request :
 - Method : POST
 - Endpoint : `/userprofile`
 - Authorization : verifyToken, IsUser
+
 - Header :
     - Accept: application/json
     - Bearer token
@@ -373,7 +396,6 @@ Request :
     "namaBelakang": "",
 }
 ```
-
 
 - Response if you haven't requested a token :
 ```json
@@ -397,11 +419,14 @@ Request :
 }
 ```
 
+
 - Response : 
 ```json 
 {
 {
+
   "message": "Userprofile is created successfully",
+
   "data": [
     {
       "_id": "63890eca981b2d81ad680aea",
@@ -418,7 +443,6 @@ Request :
 }
 ```
 
-
 # Get User Profile
 
 Request :
@@ -427,10 +451,12 @@ Request :
 - Header :
     - Accept: application/json
 
+
 - Response : 
 ```json 
 {
 {
+
   "message": "success get data",
   "data": [
     {
@@ -486,6 +512,7 @@ Request :
 ```json 
 {
 {
+
   "result": {
     "_id": "63890eca981b2d81ad680aea",
     "namaDepan": "Febrianto",
@@ -539,7 +566,6 @@ Request :
   "message": "No token provided!!"
 }
 ```
-
 
 - Response if you token invalid :
 ```json

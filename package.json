@@ -17,9 +17,9 @@
   "bugs": {
     "url": "https://github.com/Greenpeace-FEBE-11/final-project-BE/issues"
   },
-
   "homepage": "https://github.com/Greenpeace-FEBE-11/final-project-BE#readme",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
     "cookie-parser": "^1.4.6",
@@ -32,13 +32,12 @@
     "express-validator": "^6.14.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.7.3",
-    "uuid": "^9.0.0",
     "morgan": "^1.10.0",
     "multer": "^1.4.5-lts.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.20"
   }
-
 }

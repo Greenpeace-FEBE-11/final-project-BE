@@ -62,21 +62,20 @@ exports.register = (req, res) => {
     }
   });
 };
-
 exports.login = (req, res) => {
   const { email, password } = req.body;
 
   User.findOne({ email }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({
-        error: "Email not found",
+        error: "Invalid email or password",
       });
     }
 
     // Verifikasi password
     user.comparePassword(password, (err, isMatch) => {
       if (err || !isMatch) {
-        return res.status(401).json({
+        return res.status(400).json({
           error: "Invalid email or password",
         });
       }

@@ -68,30 +68,21 @@ exports.login = (req, res) => {
   User.findOne({ email }, (err, user) => {
     if (err || !user) {
       return res.status(400).json({
-        error: "Invalid email or password",
+        error: "Email was not found",
       });
     }
 
-    // Verifikasi password
-    user.comparePassword(password, (err, isMatch) => {
-      if (err || !isMatch) {
-        return res.status(400).json({
-          error: "Invalid email or password",
-        });
-      }
+    const token = jwt.sign({ id: user._id }, config.secret, {
+      expiresIn: 86400, // 24 hours
+    });
 
-      const token = jwt.sign({ id: user._id }, config.secret, {
-        expiresIn: 86400, // 24 hours
-      });
+    req.headers.token = token;
 
-      req.headers.authorization = `Bearer ${token}`;
-
-      res.status(200).send({
-        token,
-        username: user.username,
-        email: user.email,
-        roles: user.roles,
-      });
+    res.status(200).send({
+      token,
+      username: user.username,
+      email: user.email,
+      roles: user.roles,
     });
   });
 };

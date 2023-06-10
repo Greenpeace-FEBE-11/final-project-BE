@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const bcrypt = require("bcryptjs");
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -14,6 +13,7 @@ const userSchema = new mongoose.Schema({
     min: 6,
     max: 255,
   },
+
   password: {
     type: String,
     required: true,
@@ -25,14 +25,5 @@ const userSchema = new mongoose.Schema({
     default: Date.now,
   },
 });
-
-// Fungsi untuk membandingkan password
-userSchema.methods.comparePassword = async function (password) {
-  try {
-    return await bcrypt.compare(password, this.password);
-  } catch (error) {
-    throw new Error(error);
-  }
-};
 
 module.exports = mongoose.model("User", userSchema);

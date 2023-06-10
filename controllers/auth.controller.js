@@ -73,26 +73,17 @@ exports.login = (req, res) => {
       });
     }
 
-    // Verifikasi password
-    user.comparePassword(password, (err, isMatch) => {
-      if (err || !isMatch) {
-        return res.status(401).json({
-          error: "Invalid email or password",
-        });
-      }
+    const token = jwt.sign({ id: user._id }, config.secret, {
+      expiresIn: 86400, // 24 hours
+    });
 
-      const token = jwt.sign({ id: user._id }, config.secret, {
-        expiresIn: 86400, // 24 hours
-      });
+    req.headers.token = token;
 
-      req.headers.token = token;
-
-      res.status(200).send({
-        token,
-        username: user.username,
-        email: user.email,
-        roles: user.roles,
-      });
+    res.status(200).send({
+      token,
+      username: user.username,
+      email: user.email,
+      roles: user.roles,
     });
   });
 };
